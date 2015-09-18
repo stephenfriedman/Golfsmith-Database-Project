@@ -1,0 +1,17 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+
+public class nonsense {
+	public static void main (String []args)
+	{
+	/*	import java.sql.Connection;
+		import java.sql.DriverManager;
+		import java.sql.SQLException;
+			Class.forName ("oracle.jdbc.driver.OracleDriver");	
+			Connection conn = null;		 	
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241",username,password);				    
+	*/}
+}

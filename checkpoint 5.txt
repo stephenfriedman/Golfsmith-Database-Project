@@ -1,0 +1,10 @@
+PROJECT CHECKPOINT #5
+
+I have 1 interface working. It is a cashier's interface
+that they would use at the checkout counter to enter
+in the info of a new customer. My databases are all populated
+but I still need to write triggers. I will be working
+on adding the necessary triggers to implement about
+5 interfaces total. I do not see much last minute debugging coming
+into play. I have submitted my project TEST SUBMISSION on 4/13 and 
+am awating feedback from the graders.

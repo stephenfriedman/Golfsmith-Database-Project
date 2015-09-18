@@ -1,0 +1,16 @@
+package createProjectData;
+
+import java.util.Random;
+
+public class QOHandSellingPRice {
+
+	public static void Main (String[]args)
+		{
+		for(int j=0;j<500;j++)
+		{
+			Random r =new Random();
+			int upcraw= (int)(r.nextDouble()*100);
+			System.out.println(upcraw);
+		}
+	}
+}

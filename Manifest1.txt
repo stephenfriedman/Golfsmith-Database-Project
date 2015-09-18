@@ -1,0 +1,2 @@
+Main-class: Interface1
+Class-Path: ojdbc6.jar

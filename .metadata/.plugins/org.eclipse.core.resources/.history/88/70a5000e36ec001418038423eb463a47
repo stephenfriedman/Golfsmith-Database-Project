@@ -1,0 +1,47 @@
+package createProjectData;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class salesOrders {
+	static Connection con=null;
+	public static void main(String[]args)
+	{
+		try {
+			Class.forName ("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		boolean loggedIn=false;
+		while(!loggedIn)
+		{
+			String password=null;
+			@SuppressWarnings("resource")
+			Scanner getPassword=new Scanner(System.in);
+			getPassword.reset();
+			System.out.println("Input STEPHEN FRIEDMAN password from coursesite to login in to his Oracle databases.");
+			password=getPassword.next();
+			try {
+				loggedIn=true;
+				 con =DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241","saf217",
+					       password);
+			} catch (SQLException e) {
+				System.out.println("Invalid login info. Try again.");
+				loggedIn=false;
+			}
+		}
+		ResultSet r=null;
+		Statement s=null;
+		try {
+			s=con.createStatement();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+}

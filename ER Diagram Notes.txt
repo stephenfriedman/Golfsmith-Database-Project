@@ -1,0 +1,61 @@
+My enterprise is Golfsmith. Golfsmith has many retail stores and an online presence. They sell all golf related goods from clubs, clothes, accessories,
+and training aids. All of your golf needs in one place.
+
+DEFINITIONS
+
+ITEM (entity)- an item is general. Example: driver or pitching wedge or t-shirt or pack of golf balls. 
+	 an item does not specify brand, model, or any specifics that distinguish it from another item.
+	 an item simply has a name (9 iron) and description (individiaul golf club with around 40 degrees of loft)
+	 
+BRAND (relationship)- a brand represents a company that produces the products and items. A brand usually makes many items.
+		      A product can come from many different brands.
+		      Brand is a relationship between product and item.
+		      A brand will make specific product models.
+		      Example of a brand: Callaway
+
+PRODUCT (entity)- a product is a specific item you would find in the store. 
+		  Example: Callaway X-20  7 iron
+		  Each product has an individual UPC code.
+		  Each product has a year that it was manufactured.
+		  Each product has a title that labels it to the customers.
+		  Each product has a model. Example: X-20 (newer model) vs. X-18 (older model)
+
+STOCK (relationship)- a stock is a relationship between a product and a store.
+		      Distinct products will have different stock levels at different stores.
+		      A stock has an attached attribute called Location that specifies where in the world this price is offered
+		      A stock has a quantity attribute that specifies the quantity on hand
+		      Example: UPC 145743904038 has a price of $99 in store #456 with 4 units remaining
+
+STORE (entity)- a store is either a physical location or online site that sells products.
+		Each store has a distinct store #, an address, phone #
+		It is in a relationship with Stock because each store has its own stock information for products
+		Example: Store #304 located at 5 main street with phone #(555)-555-5555
+
+CUSTOMER (entity)- a customer is a distinct individual who has an ID, name, email, address, and membership status
+		   Customer is linked with Store because a customer can shop at many stores and a store has many different customers
+		   A customer is in a relationship with Purchase. This is used to keep tabs on the customer's purchase history.
+		 
+PURCHASE (relationship)- a purchase is a relationship between a customer and product.
+			 Each purchase is an individual transaction a customer makes.
+		         Each purchase has an effect on a customer's rewards
+			 Each purchase has a date associated with it
+			 Each purchase notes if a coupon was used and for how much it saved the customer
+
+VENDOR (entity)- a vendor is an entity who supplies products to the stores.
+		 It is linked with the Brand relationship and the Store entity.
+		 A vendor supllies many different brands to many different stores.
+		 A vendor has a name, credit, owed (what product a store is owed), and AP (Accounts payable) attribute.
+                
+
+
+
+------------------------------------------------------------------------------------------------------------------
+specialization and genralization using inheritance
+change cardinalities
+brand as an attribute
+cash customers messes problems up since customer would have all null data
+customer should be able to see all purchases
+reationship needs to link entities
+purchase history entity
+		 
+			

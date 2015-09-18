@@ -1,0 +1,6 @@
+TYPES OF INTERFACES
+clerk entering new customer data
+simulating a scanner
+accountant totaling sales
+warehouse clerk updating inventory
+purchasing agent buying specific brands

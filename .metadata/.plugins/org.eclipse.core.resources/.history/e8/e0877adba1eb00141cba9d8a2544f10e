@@ -1,0 +1,8 @@
+package createProjectData;
+
+public class InventoryFill {
+	public static void main(String[]args)
+	{
+		
+	}
+}

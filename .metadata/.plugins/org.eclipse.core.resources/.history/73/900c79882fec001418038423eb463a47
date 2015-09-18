@@ -1,0 +1,105 @@
+package createProjectData;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class purchaseOrders {
+	static Connection con=null;
+
+public static void main(String[]args)
+{
+		try {
+			Class.forName ("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		boolean loggedIn=false;
+		while(!loggedIn)
+		{
+			String password=null;
+			@SuppressWarnings("resource")
+			Scanner getPassword=new Scanner(System.in);
+			getPassword.reset();
+			System.out.println("Input STEPHEN FRIEDMAN password from coursesite to login in to his Oracle databases.");
+			password=getPassword.next();
+			try {
+				loggedIn=true;
+				 con =DriverManager.getConnection("jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241","saf217",
+					       password);
+			} catch (SQLException e) {
+				System.out.println("Invalid login info. Try again.");
+				loggedIn=false;
+			}
+		}
+		ResultSet r=null;
+		Statement s=null;
+		try {
+			s=con.createStatement();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	
+		String[][]pos=new String[6][1000];
+		for(int i=0;i<1000;i++)
+		{
+			pos[0][i]=getNextPrimaryKey("purchase_orders","po_num");
+			int storeNum=(int)(Math.random()*53+1);
+			pos[1][i]=Integer.toString(storeNum);
+			int venNum=(int)(Math.random()*14+1);
+			pos[2][i]=Integer.toString(venNum);
+			
+		}
+		
+		
+}
+
+public static String getNextPrimaryKey(String tableName,String columnName)
+{
+	Statement s=null;
+	ResultSet results=null;
+	try {
+		s=con.createStatement();
+	} catch (SQLException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	ResultSetMetaData rsmd=null;
+	try {
+		results=s.executeQuery("select "+columnName+" from "+tableName);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	try {
+		rsmd=results.getMetaData();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	ArrayList<Integer> allKeys = new ArrayList<Integer>();
+	try {
+		while(results.next())
+		{
+			allKeys.add(Integer.parseInt(results.getString(1)));
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	Collections.sort(allKeys);
+	if(allKeys.isEmpty())
+		return "1";
+	return Integer.toString(allKeys.get(allKeys.size()-1)+1);
+}
+
+}
